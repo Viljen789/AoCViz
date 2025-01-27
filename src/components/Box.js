@@ -1,9 +1,9 @@
 // src/Box.js
 import React from 'react';
-import '../styles/box.css'; // Import the CSS file
+import '../styles/box.css';
 
-const Box = ({ children, style }) => {
-  return <div className="box" style = {style}>{children}</div>;
+const Box = ({ children, className, style, onClick }) => {
+  return <div className={`box ${className}`} style = {style} onClick = {onClick}>{children}</div>;
 };
 
 export default Box;
