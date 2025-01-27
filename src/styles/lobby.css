@@ -1,0 +1,41 @@
+
+.BoxContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    transition: all 0.5s ease-in-out;
+}
+.BoxContainer .box{
+    transition: all 0.5s ease-in-out;
+}
+.BoxContainer .box:hover {
+    /*padding: 2%;*/
+    background: var(--bg-gradient);
+    color: white;
+    border-radius: 30px;
+    height: 220px;
+    width: 220px;
+    margin: 0.5% 0.5%;
+    transition: all 0.5s ease-in-out;
+    mix-blend-mode: difference;  /* This will invert colors and improve visibility */
+}
+
+h1 {
+    font-size: 3rem;
+    position: relative;
+    background: transparent;
+}
+
+.BoxContainer .box:hover h1 {
+    -webkit-text-fill-color: white;
+    background: none;  /* Remove the gradient on hover */
+}
+
+.gradient-text {
+    background: var(--bg-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
