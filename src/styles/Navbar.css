@@ -1,19 +1,34 @@
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: #333333;
+  padding: 10px 50px 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 10px;
 }
 
 .navbar h1 {
   color: #fff;
+  cursor: pointer;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+}
+
+.First, .Second {
+  width: 100%;
+  max-width: 800px;
+  margin: var(--padding-large) auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav-links li {

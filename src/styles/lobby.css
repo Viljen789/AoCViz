@@ -16,7 +16,7 @@ h1 {
 
 .BoxContainer .box:hover h1 {
     -webkit-text-fill-color: white;
-    background: none;  /* Remove the gradient on hover */
+    background: none;
 }
 
 .enabled {

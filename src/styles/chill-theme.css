@@ -29,7 +29,21 @@ body {
   padding: var(--padding-large);
 }
 
+/* Parent container for buttons: center the buttons horizontally */
+.speed-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* in case there are many buttons */
+}
+
+
 .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   background-color: var(--primary-color);
   color: var(--background-color);
   padding: var(--padding-medium) var(--padding-large);
@@ -37,6 +51,8 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color var(--transition-speed), color var(--transition-speed);
+  width: 70px;
+  margin: 10px;
 }
 
 .button:hover {
@@ -61,10 +77,4 @@ h1, h2, h3, h4, h5, h6 {
 p {
   line-height: 1.6;
   margin-bottom: var(--padding-medium);
-}
-
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

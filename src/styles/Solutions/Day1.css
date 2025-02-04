@@ -1,0 +1,62 @@
+.day1 .First, .day1 .Second {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.day1 .First .elements,
+.day1 .Second .elements {
+  display: flex;       /* Turns on Flexbox layout */
+  flex-direction: row; /* Lay items out horizontally */
+  flex-wrap: nowrap;   /* Prevent them from wrapping to a new line
+                          (remove or change to wrap if you want multiple rows) */
+  gap: 10px;           /* Optional: adds spacing between boxes */
+}
+
+h1 {
+  padding-top: 10px;
+  font-size: 3rem;
+  position: relative;
+  background: transparent;
+}
+
+/*.data-processor .First div.animate {*/
+/*  scale: 1.2;*/
+/*  background-color: #FFD700;*/
+/*}*/
+
+/*.data-processor .Second div.animate {*/
+/*  scale: 1.2;*/
+/*  background-color: #00FA9A;*/
+/*}*/
+
+.first {
+  display: flex;
+  justify-content: center;
+    background-color: #282c34;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.second {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.number-box.active {
+  background-color: rgba(0, 128, 128, 0.2);
+  transform: scale(1.2);
+}
+
+.number-box {
+  width: 60px; /* Set a fixed width */
+  height: 60px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px; /* Optional: adds space between boxes */
+  border: 1px solid var(--border-color); /* Optional: for visual consistency */
+  border-radius: var(--border-radius); /* Optional: rounding the corners */
+}

@@ -1,10 +1,10 @@
-// src/App.js
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Lobby from './pages/Lobby';
 import './App.css';
-import ProblemPage from './pages/ProblemPage';
+import './styles/chill-theme.css';
+import ProblemPage from "./pages/ProblemPage";
 
 function App() {
   return (

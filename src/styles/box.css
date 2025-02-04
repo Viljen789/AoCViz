@@ -17,17 +17,17 @@
 
 
 .BoxContainer .box.enabled:hover {
-    /*padding: 2%;*/
     background: var(--bg-gradient);
     color: white;
     border-radius: 30px;
-    height: 220px;
-    width: 220px;
-    margin: 0.5% 0.5%;
     transition: all 0.5s ease-in-out;
     mix-blend-mode: difference;
-    cursor : pointer;
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+
 }
+
 
 .box.disabled{
     background-color: #f0f0f0;
