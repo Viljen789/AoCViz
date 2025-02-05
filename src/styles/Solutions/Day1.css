@@ -1,5 +1,7 @@
 .day1 .First, .day1 .Second {
   display: flex;
+  justify-content: center;
+    align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
@@ -19,15 +21,6 @@ h1 {
   background: transparent;
 }
 
-/*.data-processor .First div.animate {*/
-/*  scale: 1.2;*/
-/*  background-color: #FFD700;*/
-/*}*/
-
-/*.data-processor .Second div.animate {*/
-/*  scale: 1.2;*/
-/*  background-color: #00FA9A;*/
-/*}*/
 
 .first {
   display: flex;
@@ -49,7 +42,12 @@ h1 {
   background-color: rgba(0, 128, 128, 0.2);
   transform: scale(1.2);
 }
-
+.speed-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 .number-box {
   width: 60px; /* Set a fixed width */
   height: 60px; /* Set a fixed height */
@@ -59,4 +57,11 @@ h1 {
   margin: 0 8px; /* Optional: adds space between boxes */
   border: 1px solid var(--border-color); /* Optional: for visual consistency */
   border-radius: var(--border-radius); /* Optional: rounding the corners */
+}
+.array-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }

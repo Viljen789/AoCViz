@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, LayoutGroup } from "framer-motion";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 import TextBox from "../../components/TextBox";
 import "../../styles/chill-theme.css";
 import "../../styles/Solutions/Day1.css";
@@ -10,19 +10,39 @@ const Day1 = () => {
   const [processedData, setProcessedData] = useState("");
   const [originalFirstArray, setOriginalFirstArray] = useState([]);
   const [originalSecondArray, setOriginalSecondArray] = useState([]);
+  const [step, setStep] = useState(0);
 
   const [sortedFirstArray, setSortedFirstArray] = useState([]);
   const [sortedSecondArray, setSortedSecondArray] = useState([]);
+  const [firstSorted, setFirstSorted] = useState(false);
+  const [secondSorted, setSecondSorted] = useState(false);
 
 
   const [activeIds, setActiveIds] = useState([]);
   const [duration, setDuration] = useState(1000);
   const [sort, setSort] = useState(false);
   const animationSpeeds = [1, 2, 5, 20, 100];
+  const [currentSpeed, setCurrentSpeed] = useState(1);
   const durationRef = useRef(duration);
+  const steps = ["Sort", "Compare"];
+  const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Each child will animate with a 0.3s delay between them
+    },
+  },
+};
+  const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
   useEffect(() => {
     durationRef.current = duration;
   }, [duration]);
+
 
 
 const processInputData = (input) => {
@@ -50,27 +70,34 @@ const processInputData = (input) => {
   useEffect(() => {
   if (sort) {
     const bubbleSort = async () => {
-      const sortArray = async (arr, setArray) => {
-        const n = arr.length;
+      const sortArrays = async (arr1, arr2, setArray1, setArray2) => {
+        const n = arr1.length;
         for (let i = 0; i < n; i++) {
           for (let j = 0; j < n - i - 1; j++) {
-            setActiveIds([arr[j].id, arr[j + 1].id]);
-            await sleep(durationRef.current);
-            if (arr[j].value > arr[j + 1].value) {
-              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-              setArray([...arr]);
+            if (arr1[j] && arr1[j + 1] && arr2[j] && arr2[j + 1]) {
+              setActiveIds([arr1[j].id, arr1[j + 1].id, arr2[j].id, arr2[j + 1].id]);
+              await sleep(durationRef.current);
+              if (arr1[j].value > arr1[j + 1].value) {
+                [arr1[j], arr1[j + 1]] = [arr1[j + 1], arr1[j]];
+                setArray1([...arr1]);
+              }
+              if (arr2[j].value > arr2[j + 1].value) {
+                [arr2[j], arr2[j + 1]] = [arr2[j + 1], arr2[j]];
+                setArray2([...arr2]);
+              }
             }
           }
         }
       };
-
-      await sortArray([...sortedFirstArray], setSortedFirstArray);
-      await sortArray([...sortedSecondArray], setSortedSecondArray);
+      await sortArrays([...sortedFirstArray], [...sortedSecondArray], setSortedFirstArray, setSortedSecondArray);
 
       setActiveIds([]);
       setSort(false);
     };
-    bubbleSort();
+    bubbleSort().then(() => {
+      setFirstSorted(true);
+      setSecondSorted(true);
+    });
   }
 }, [sort]);
 
@@ -82,19 +109,19 @@ const processInputData = (input) => {
 
       {originalFirstArray.length > 0 && (
         <div className="arrays-display" style={{ display: "flex", gap: "2rem" }}>
-          <div className="array-section">
-            <h4>Original Array</h4>
-            <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {originalFirstArray.map((item) => (
-                <div key={item.id} className="number-box">
-                  {item.value}
-                </div>
-              ))}
-            </div>
-          </div>
+          {/*<div className="array-section">*/}
+          {/*  <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>*/}
+          {/*    {originalFirstArray.map((item) => (*/}
+          {/*      <div key={item.id} className="number-box">*/}
+          {/*        {item.value}*/}
+          {/*      </div>*/}
+          {/*    ))}*/}
+          {/*  </div>*/}
+          {/*  <h4>Original first array</h4>*/}
+          {/*</div>*/}
 
           <div className="array-section">
-            <h4>Sorted Array</h4>
+            {firstSorted?<h4>Sorted first array</h4>: <h4>Sorting first array...</h4>}
             <LayoutGroup>
               <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                 {sortedFirstArray.map((item) => {
@@ -104,7 +131,6 @@ const processInputData = (input) => {
                       layout
                       key={item.id}
                       className={`number-box ${isActive ? "active" : ""}`}
-                      // Use a spring animation with adjusted stiffness and damping
                       transition={{ type: "spring", stiffness: 170, damping: 26 }}
                       initial={{
                         opacity: isActive ? 1 : 0.7,
@@ -132,19 +158,19 @@ const processInputData = (input) => {
         </div>
       )}{originalSecondArray.length > 0 && (
         <div className="arrays-display" style={{ display: "flex", gap: "2rem" }}>
-          <div className="array-section">
-            <h4>Original Array</h4>
-            <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {originalSecondArray.map((item) => (
-                <div key={item.id} className="number-box">
-                  {item.value}
-                </div>
-              ))}
-            </div>
-          </div>
+          {/*<div className="array-section">*/}
+          {/*  <h4>Original second array</h4>*/}
+          {/*  <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>*/}
+          {/*    {originalSecondArray.map((item) => (*/}
+          {/*      <div key={item.id} className="number-box">*/}
+          {/*        {item.value}*/}
+          {/*      </div>*/}
+          {/*    ))}*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
           <div className="array-section">
-            <h4>Sorted Array</h4>
+
             <LayoutGroup>
               <div className="elements" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                 {sortedSecondArray.map((item) => {
@@ -178,35 +204,59 @@ const processInputData = (input) => {
                 })}
               </div>
             </LayoutGroup>
+            {secondSorted?<h4>Sorted second array</h4>: <h4>Sorting second array...</h4>}
           </div>
         </div>
       )}
 
       <div className="button-container" style={{ marginTop: "1rem" }}>
-        <button
+        <motion.button
           className="button"
           onClick={() => {
             setActiveIds([]);
             setSort(true);
+            setStep(step+1);
           }}
+          whileTap={{ scale: 0.9 }}
         >
-          Sort
-        </button>
+          Step {step+1}: {steps[step]}
+        </motion.button>
       </div>
-
-      <div className="speed-buttons" style={{ marginTop: "1rem" }}>
-        <p>Animation Speed:</p>
-        {animationSpeeds.map((speed, index) => (
-          <button
-            className="button"
-            key={index}
-            onClick={() => setDuration(1000 / speed)}
-            style={{ marginRight: "0.5rem" }}
-          >
-            {speed}x
-          </button>
-        ))}
-      </div>
+        <div className="speed-part" style={{ marginTop: "1rem" }}>
+          <div className="speed-buttons">
+            <AnimatePresence>
+             {step===1?(<motion.div
+                 initial={{ opacity: 0, scale: 0 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 exit={{ opacity: 0, scale: 0 }}
+             >
+                 <p>Animation Speed</p>
+              <motion.ul
+              variants={listVariants}
+              initial="hidden"
+              animate="visible"
+              style={{ display: "flex", gap: "0.5rem", listStyle: "none", padding: 0 }}
+              exit={{ opacity: 0, scale: 0 }}
+            >
+              {animationSpeeds.map((speed, index) => (
+                <motion.li
+                  key={index}
+                  variants={itemVariants}
+                  className={"button" + (currentSpeed === speed ? " active" : "")}
+                  onClick={() => {
+                    setDuration(1000 / speed);
+                    setCurrentSpeed(speed);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  {speed}x
+                </motion.li>
+              ))}
+            </motion.ul>
+              </motion.div>):null}
+            </AnimatePresence>
+          </div>
+        </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@
   --padding-medium: 16px;
   --padding-large: 24px;
   --border-radius: 4px;
-  --transition-speed: 0.3s;
+  --transition-speed: 0.5s;
 }
 
 html, body {
@@ -29,13 +29,6 @@ body {
   padding: var(--padding-large);
 }
 
-/* Parent container for buttons: center the buttons horizontally */
-.speed-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; /* in case there are many buttons */
-}
 
 
 .button {
@@ -58,6 +51,7 @@ body {
 .button:hover {
   background-color: var(--accent-color);
   color: var(--background-color);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .card {
