@@ -20,11 +20,9 @@
     color: white;
     border-radius: 30px;
     transition: all 0.5s ease-in-out;
-    mix-blend-mode: difference;
     cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
-
 }
 
 

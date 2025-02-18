@@ -10,6 +10,7 @@
   --padding-large: 24px;
   --border-radius: 4px;
   --transition-speed: 0.5s;
+  --bg-gradient: linear-gradient(45deg, #333, #777);
 }
 
 html, body {

@@ -1,70 +1,72 @@
 :root {
-  --primary-color: #333333;
-  --secondary-color: #555555;
-  --accent-color: #777777;
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --border-color: #cccccc;
-  --padding-small: 8px;
-  --padding-medium: 16px;
-  --padding-large: 24px;
-  --border-radius: 4px;
-  --transition-speed: 0.3s;
+    --primary-color: #333333;
+    --secondary-color: #555555;
+    --accent-color: #777777;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #cccccc;
+    --padding-small: 8px;
+    --padding-medium: 16px;
+    --padding-large: 24px;
+    --border-radius: 4px;
+    --transition-speed: 0.3s;
+
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--padding-large);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--padding-large);
 }
 
 .button {
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  padding: var(--padding-medium) var(--padding-large);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: var(--padding-medium) var(--padding-large);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .button:hover {
-  background-color: var(--accent-color);
-  color: var(--background-color);
+    background-color: var(--accent-color);
+    color: var(--background-color);
 }
 
 .card {
-  background-color: var(--background-color);
-  color: var(--primary-color);
-  border: 1px solid var(--border-color);
-  padding: var(--padding-large);
-  border-radius: calc(var(--border-radius) * 2);
-  margin: var(--padding-medium) 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    padding: var(--padding-large);
+    border-radius: calc(var(--border-radius) * 2);
+    margin: var(--padding-medium) 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 var(--padding-medium) 0;
+    margin: 0 0 var(--padding-medium) 0;
 }
 
 p {
-  line-height: 1.6;
-  margin-bottom: var(--padding-medium);
+    line-height: 1.6;
+    margin-bottom: var(--padding-medium);
 }
 
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
